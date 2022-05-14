@@ -19,13 +19,11 @@ namespace SharpMonoInjector.Console
             {                
                 System.Console.WriteLine("\r\nSharpMonoInjector4.8\r\n\r\nWARNING: You are running this in an unpriveleged process, try from an Elevated Command Prompt.\r\n");
                 System.Console.WriteLine("\t As an alternative, right-click Game .exe and uncheck the Compatibility\r\n\t setting 'Run this program as Administrator'.\r\n\r\n");
-                //System.Console.ReadKey();
-                //return;
             }
 
             if (AntivirusInstalled())
             {
-                System.Console.WriteLine("!!! WARNING ANTIVIRUS DETECTED !!! CHECK DEBUG.LOG FOR RUNNING PROCESS.\r\n\r\n");
+                System.Console.WriteLine("An antivirus has been detected. CHECK DebugLog.txt for running processes.\r\n\r\n");
             }
 
             if (args.Length == 0)
@@ -203,43 +201,6 @@ namespace SharpMonoInjector.Console
         {
             // ref: https://stackoverflow.com/questions/1331887/detect-antivirus-on-windows-using-c-sharp
 
-            #region[Pre-Windows 7]
-            /* 
-            try
-            {
-                bool defenderFlag = false;
-                string wmipathstr = @"\\" + Environment.MachineName + @"\root\SecurityCenter";
-
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher(wmipathstr, "SELECT * FROM AntivirusProduct");
-                ManagementObjectCollection instances = searcher.Get();
-
-                if (instances.Count > 0)
-                {
-                    File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "\\DebugLog.txt", "AntiVirus Installed: True\r\n");
-
-                    string installedAVs = "Installed AntiVirus':\r\n";
-                    foreach (ManagementBaseObject av in instances)
-                    {
-                        //installedAVs += av.GetText(TextFormat.WmiDtd20) + "\r\n";
-                        var AVInstalled = ((string)av.GetPropertyValue("pathToSignedProductExe")).Replace("//", "") + " " + (string)av.GetPropertyValue("pathToSignedReportingExe");
-                        installedAVs += "   " + AVInstalled + "\r\n";
-
-                        if (((string)av.GetPropertyValue("pathToSignedProductExe")).StartsWith("windowsdefender") && ((string)av.GetPropertyValue("pathToSignedReportingExe")).EndsWith("Windows Defender\\MsMpeng.exe")) { defenderFlag = true; }
-                    }
-                    File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "\\DebugLog.txt", installedAVs + "\r\n");
-                }
-                else { File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "\\DebugLog.txt", "AntiVirus Installed: False\r\n"); }
-
-                if (defenderFlag) { return false; } else { return instances.Count > 0; }
-            }
-
-            catch (Exception e)
-            {
-                File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "\\DebugLog.txt", "Error Checking for AV: " + e.Message + "\r\n");
-            }
-            */
-            #endregion
-
             try
             {
                 List<string> avs = new List<string>();
@@ -256,13 +217,9 @@ namespace SharpMonoInjector.Console
                     string installedAVs = "Installed AntiVirus':\r\n";
                     foreach (ManagementBaseObject av in instances)
                     {
-                        //installedAVs += av.GetText(TextFormat.WmiDtd20) + "\r\n";
                         var AVInstalled = ((string)av.GetPropertyValue("pathToSignedProductExe")).Replace("//", "") + " " + (string)av.GetPropertyValue("pathToSignedReportingExe");
                         installedAVs += "   " + AVInstalled + "\r\n";
                         avs.Add(AVInstalled.ToLower());
-
-                        // Comment here to test
-                        //if (((string)av.GetPropertyValue("pathToSignedProductExe")).StartsWith("windowsdefender") && ((string)av.GetPropertyValue("pathToSignedReportingExe")).EndsWith("Windows Defender\\MsMpeng.exe")) { defenderFlag = true; }
                     }
                     File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "\\DebugLog.txt", installedAVs + "\r\n");
                 }
@@ -289,7 +246,6 @@ namespace SharpMonoInjector.Console
 
             return false;
         }
-
 
         #endregion
     }
