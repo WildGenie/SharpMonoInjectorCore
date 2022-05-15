@@ -25,6 +25,18 @@ Inject
 smi.exe inject -p RobocraftClient -a rc15-hax.dll -n ExampleAssembly -c Loader -m Load
 ```
 
+```yaml
+Usage:
+smi.exe inject <options>
+
+Required arguments:
+-p      id or name of the target process
+-a      path of the assembly to inject
+-n      namespace in which the loader class resides
+-c      name of the loader class
+-m      name of the method to invoke in the loader class
+```
+
 Eject
 
 ```bash
@@ -33,11 +45,11 @@ smi.exe eject -p RobocraftClient -a 0x13D23A98 -n ExampleAssembly -c Loader -m U
 
 ```yaml
 Usage:
-smi.exe <inject/eject> <options>
+smi.exe eject <options>
 
 Required arguments:
 -p      id or name of the target process
--a      when injecting, the path of the assembly to inject. When ejecting, the address of the assembly to eject
+-a      address of the assembly to eject
 -n      namespace in which the loader class resides
 -c      name of the loader class
 -m      name of the method to invoke in the loader class
