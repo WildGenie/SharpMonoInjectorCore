@@ -54,7 +54,3 @@ Required arguments:
 -c      name of the loader class
 -m      name of the method to invoke in the loader class
 ```
-
-```bash
-build/debug/smi.exe
-```
