@@ -22,7 +22,7 @@ dotnet build SharpMonoInjector.Console
 Inject
 
 ```bash
-smi.exe inject -p RobocraftClient -a rc15-hax.dll -n ExampleAssembly -c Loader -m Load
+smi.exe inject -p RobocraftClient -a rc15-hax.dll -n RC15_HAX -c Loader -m Load
 ```
 
 ```yaml
@@ -40,7 +40,7 @@ Required arguments:
 Eject
 
 ```bash
-smi.exe eject -p RobocraftClient -a 0x13D23A98 -n ExampleAssembly -c Loader -m Unload
+smi.exe eject -p RobocraftClient -a 0x13D23A98 -n RC15_HAX -c Loader -m Unload
 ```
 
 ```yaml
