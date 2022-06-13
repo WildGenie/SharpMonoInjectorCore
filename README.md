@@ -55,6 +55,8 @@ Required arguments:
 -m      name of the method to invoke in the loader class
 ```
 
+## Submodule
+
 If you plan package this along with your cheats, I would recommend that you add this repository as a git submodule.
 
 ```bash
