@@ -78,11 +78,3 @@ When using this application, you may run into the following warnings.
 > Unable to clear the console. To fix this issue, please ensure that the output is not being redirected.
 
 This simply means that the console's output is being redirected elsewhere. Whether this was intentional or not, this warning is safe to ignore but it does hint some underlying issues you have with your CLI that you may be interested in fixing.
-
-> WARNING: You are running this in an unpriveleged process, which may lead to unexpected behaviour.
-
-No idea why [wh0am15533](https://github.com/wh0am15533) added this warning as I never had an issue running the injector without privilege elevation.
-
-> An antivirus has been detected. If you encounter an issue, it may be necessary to disable your antivirus.
-
-Another warning by [wh0am15533](https://github.com/wh0am15533) that had zero consequences on any of my systems. I may remove these warnings altogether when I have time to test the application further.
