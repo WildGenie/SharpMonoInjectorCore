@@ -55,6 +55,20 @@ Required arguments:
 -m      name of the method to invoke in the loader class
 ```
 
+If you plan package this along with your cheats, I would recommend that you add this repository as a git submodule.
+
+```bash
+mkdir submodules
+git submodule add --depth 1 https://github.com/winstxnhdw/SharpMonoInjector4.8.git ./submodules
+git config -f .gitmodules submodule.submodules/SharpMonoInjector4.8.shallow true
+```
+
+To update your submodule later, simply run the following.
+
+```bash
+git submodule update --init --recursive
+```
+
 ## Troubleshoot
 
 When using this application, you may run into the following warnings.
