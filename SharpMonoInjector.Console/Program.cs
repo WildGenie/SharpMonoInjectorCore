@@ -11,19 +11,27 @@ namespace SharpMonoInjector.Console
     {
         private static void Main(string[] args)
         {
-            System.Console.Clear();
+            try {
+                Console.Clear();
+            }
+
+            catch(IOException e) {
+                Console.WriteLine("Unable to clear the console. To fix this issue, please ensure that the output is not being redirected.")
+            }
 
             bool IsElevated = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
 
             if (!IsElevated)
             {                
-                System.Console.WriteLine("\r\nSharpMonoInjector4.8\r\n\r\nWARNING: You are running this in an unpriveleged process, try from an Elevated Command Prompt.\r\n");
-                System.Console.WriteLine("\t As an alternative, right-click Game .exe and uncheck the Compatibility\r\n\t setting 'Run this program as Administrator'.\r\n\r\n");
+                Console.WriteLine("\r\nSharpMonoInjector4.8\r\n");
+                Console.WriteLine("WARNING: You are running this in an unpriveleged process, which may lead to unexpected behaviour.\r\n")
+                Console.WriteLine("\t As an alternative, right-click Game .exe and uncheck the Compatibility\r\n\t setting 'Run this program as Administrator'.\r\n\r\n");
             }
 
             if (AntivirusInstalled())
             {
-                System.Console.WriteLine("An antivirus has been detected. CHECK DebugLog.txt for running processes.\r\n\r\n");
+                Console.WriteLine("An antivirus has been detected. If you encounter an issue, it may be necessary to disable your antivirus.");
+                Console.WriteLine("You may check the DebugLog.txt file for the detected processes.\r\n\r\n");
             }
 
             if (args.Length == 0)
@@ -39,7 +47,7 @@ namespace SharpMonoInjector.Console
 
             if (!inject && !eject)
             {
-                System.Console.WriteLine("No operation (inject/eject) specified");
+                Console.WriteLine("No operation (inject/eject) specified");
                 return;
             }
 
@@ -55,7 +63,7 @@ namespace SharpMonoInjector.Console
             }
             else
             {
-                System.Console.WriteLine("No process id/name specified");
+                Console.WriteLine("No process id/name specified");
                 return;
             }
 
@@ -80,7 +88,7 @@ namespace SharpMonoInjector.Console
                 "Examples:\r\n" +
                 "smi.exe inject -p testgame -a ExampleAssembly.dll -n ExampleAssembly -c Loader -m Load\r\n" +
                 "smi.exe eject -p testgame -a 0x13D23A98 -n ExampleAssembly -c Loader -m Unload\r\n";
-            System.Console.WriteLine(help);
+            Console.WriteLine(help);
         }
 
         private static void Inject(Injector injector, CommandLineArguments args)
@@ -96,13 +104,13 @@ namespace SharpMonoInjector.Console
                 }
                 catch
                 {
-                    System.Console.WriteLine("Could not read the file " + assemblyPath);
+                    Console.WriteLine("Could not read the file " + assemblyPath);
                     return;
                 }
             }
             else
             {
-                System.Console.WriteLine("No assembly specified");
+                Console.WriteLine("No assembly specified");
                 return;
             }
 
@@ -110,13 +118,13 @@ namespace SharpMonoInjector.Console
 
             if (!args.GetStringArg("-c", out className))
             {
-                System.Console.WriteLine("No class name specified");
+                Console.WriteLine("No class name specified");
                 return;
             }
 
             if (!args.GetStringArg("-m", out methodName))
             {
-                System.Console.WriteLine("No method name specified");
+                Console.WriteLine("No method name specified");
                 return;
             }
 
@@ -130,17 +138,17 @@ namespace SharpMonoInjector.Console
                 }
                 catch (InjectorException ie)
                 {
-                    System.Console.WriteLine("Failed to inject assembly: " + ie);
+                    Console.WriteLine("Failed to inject assembly: " + ie);
                 }
                 catch (Exception exc)
                 {
-                    System.Console.WriteLine("Failed to inject assembly (unknown error): " + exc);
+                    Console.WriteLine("Failed to inject assembly (unknown error): " + exc);
                 }
 
                 if (remoteAssembly == IntPtr.Zero)
                     return;
 
-                System.Console.WriteLine($"{Path.GetFileName(assemblyPath)}: " + (injector.Is64Bit ? $"0x{remoteAssembly.ToInt64():X16}" : $"0x{remoteAssembly.ToInt32():X8}"));
+                Console.WriteLine($"{Path.GetFileName(assemblyPath)}: " + (injector.Is64Bit ? $"0x{remoteAssembly.ToInt64():X16}" : $"0x{remoteAssembly.ToInt32():X8}"));
             }
         }
 
@@ -159,7 +167,7 @@ namespace SharpMonoInjector.Console
             }
             else
             {
-                System.Console.WriteLine("No assembly pointer specified");
+                Console.WriteLine("No assembly pointer specified");
                 return;
             }
 
@@ -167,13 +175,13 @@ namespace SharpMonoInjector.Console
 
             if (!args.GetStringArg("-c", out className))
             {
-                System.Console.WriteLine("No class name specified");
+                Console.WriteLine("No class name specified");
                 return;
             }
 
             if (!args.GetStringArg("-m", out methodName))
             {
-                System.Console.WriteLine("No method name specified");
+                Console.WriteLine("No method name specified");
                 return;
             }
 
@@ -182,15 +190,15 @@ namespace SharpMonoInjector.Console
                 try
                 {
                     injector.Eject(assembly, @namespace, className, methodName);
-                    System.Console.WriteLine("Ejection successful");
+                    Console.WriteLine("Ejection successful");
                 }
                 catch (InjectorException ie)
                 {
-                    System.Console.WriteLine("Ejection failed: " + ie);
+                    Console.WriteLine("Ejection failed: " + ie);
                 }
                 catch (Exception exc)
                 {
-                    System.Console.WriteLine("Ejection failed (unknown error): " + exc);
+                    Console.WriteLine("Ejection failed (unknown error): " + exc);
                 }
             }
         }
@@ -236,7 +244,7 @@ namespace SharpMonoInjector.Console
                     }
                 }
 
-                if (defenderFlag) { return false; } else { return instances.Count > 0; }
+                return defenderFlag ? false : instances.Count > 0;
             }
 
             catch (Exception e)
