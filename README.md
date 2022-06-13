@@ -68,7 +68,7 @@ git config -f .gitmodules submodule.submodules/SharpMonoInjector4.8.shallow true
 To update your submodule later, simply run the following.
 
 ```bash
-git submodule update --init --recursive
+git submodule update --remote
 ```
 
 ## Troubleshoot
