@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace SharpMonoInjector.Console {
@@ -114,10 +114,6 @@ namespace SharpMonoInjector.Console {
                     System.Console.WriteLine($"Ejection failed: {ie}");
                 }
 
-                catch (Exception exc) {
-                    System.Console.WriteLine($"Ejection failed (unknown error): {exc}");
-                }
-
                 if (remoteAssembly == IntPtr.Zero) return;
 
                 System.Console.WriteLine($"{Path.GetFileName(assemblyPath)}: " + (injector.Is64Bit ? $"0x{remoteAssembly.ToInt64():X16}" : $"0x{remoteAssembly.ToInt32():X8}"));
@@ -131,9 +127,11 @@ namespace SharpMonoInjector.Console {
             if (args.GetIntArg("-a", out int intPtr)) {
                 assembly = (IntPtr)intPtr;
             }
+            
             else if (args.GetLongArg("-a", out long longPtr)) {
                 assembly = (IntPtr)longPtr;
             }
+            
             else {
                 System.Console.WriteLine("No assembly pointer specified");
                 return;
@@ -159,10 +157,6 @@ namespace SharpMonoInjector.Console {
 
                 catch (InjectorException ie) {
                     System.Console.WriteLine($"Ejection failed: {ie}");
-                }
-
-                catch (Exception exc) {
-                    System.Console.WriteLine($"Ejection failed (unknown error): {exc}");
                 }
             }
         }
