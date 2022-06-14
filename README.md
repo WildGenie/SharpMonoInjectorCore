@@ -5,8 +5,8 @@ SharpMonoInjector4.8 is a tool for injecting assemblies into Mono embedded appli
 ## Requirements
 
 - Windows 10/11
-- Microsoft .NET Framework 4.8
-- Microsoft .NET CLI
+- [Microsoft .NET SDK](https://dotnet.microsoft.com/en-us/download)
+- [Microsoft .NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net48-developer-pack-offline-installer)
 
 ## Concept
 
