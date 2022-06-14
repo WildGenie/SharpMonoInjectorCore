@@ -14,21 +14,14 @@ namespace SharpMonoInjector.Console {
             }
 
             System.Console.WriteLine("SharpMonoInjector4.8");
-
-            if (args.Length == 0) {
-                PrintHelp();
-                return;
-            }
+            if (args.Length == 0) PrintHelp();
 
             CommandLineArguments cla = new CommandLineArguments(args);
 
             bool inject = cla.IsSwitchPresent("inject");
             bool eject = cla.IsSwitchPresent("eject");
 
-            if (!inject && !eject) {
-                System.Console.WriteLine("No operation (inject/eject) specified");
-                return;
-            }
+            if (!inject && !eject) PrintHelp("No operation (inject/eject) specified");
 
             Injector injector;
 
@@ -41,7 +34,7 @@ namespace SharpMonoInjector.Console {
             }
 
             else {
-                System.Console.WriteLine("No process id/name specified");
+                PrintHelp("No process id/name specified");
                 return;
             }
 
@@ -54,9 +47,8 @@ namespace SharpMonoInjector.Console {
             }
         }
 
-        static void PrintHelp() {
+        static void PrintHelp(string additionalMessage = "") {
             const string help =
-                "SharpMonoInjector4.8\n\n" +
                 "Usage:\n" +
                 "smi.exe <inject/eject> <options>\n\n" +
                 "Options:\n" +
@@ -66,9 +58,12 @@ namespace SharpMonoInjector.Console {
                 "-c - The name of the loader class\n" +
                 "-m - The name of the method to invoke in the loader class\n\n" +
                 "Examples:\n" +
-                "smi.exe inject -p testgame -a ExampleAssembly.dll -n ExampleAssembly -c Loader -m Load\n" +
-                "smi.exe eject -p testgame -a 0x13D23A98 -n ExampleAssembly -c Loader -m Unload\n";
+                "SharpMonoInjector4.8.exe inject -p RobocraftClient -a rc15-hax.dll -n RC15_HAX -c Loader -m Load\n" +
+                "SharpMonoInjector4.8.exe eject -p RobocraftClient -a 0x13D23A98 -n RC15_HAX -c Loader -m Unload\n";
+
+            if (!string.IsNullOrEmpty(additionalMessage)) System.Console.WriteLine(additionalMessage);
             System.Console.WriteLine(help);
+            Environment.Exit(0);
         }
 
         static void Inject(Injector injector, CommandLineArguments args) {
@@ -127,11 +122,11 @@ namespace SharpMonoInjector.Console {
             if (args.GetIntArg("-a", out int intPtr)) {
                 assembly = (IntPtr)intPtr;
             }
-            
+
             else if (args.GetLongArg("-a", out long longPtr)) {
                 assembly = (IntPtr)longPtr;
             }
-            
+
             else {
                 System.Console.WriteLine("No assembly pointer specified");
                 return;
