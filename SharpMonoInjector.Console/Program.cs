@@ -4,16 +4,7 @@ using System.IO;
 namespace SharpMonoInjector.Console {
     internal static class Program {
         static void Main(string[] args) {
-            try {
-                System.Console.Clear();
-            }
-
-            catch (IOException e) {
-                System.Console.WriteLine(e);
-                System.Console.WriteLine("Unable to clear the console. To fix this issue, please ensure that the output is not being redirected.\n");
-            }
-
-            System.Console.WriteLine("SharpMonoInjector4.8");
+            System.Console.WriteLine("\nSharpMonoInjector4.8");
             if (args.Length == 0) PrintHelp();
 
             CommandLineArguments cla = new CommandLineArguments(args);
