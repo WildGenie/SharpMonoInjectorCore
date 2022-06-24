@@ -1,19 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+
+    <OutDir>../build</OutDir>
     <OutputType>exe</OutputType>
-    <RootNamespace>SharpMonoInjector.Console</RootNamespace>
     <AssemblyName>SharpMonoInjectorCore</AssemblyName>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Deterministic>true</Deterministic>
+
   </PropertyGroup>
 
   <ItemGroup>
+
     <ProjectReference Include="..\SharpMonoInjector\SharpMonoInjector.csproj">
       <Name>SharpMonoInjector</Name>
     </ProjectReference>
 
     <PackageReference Include="System.Management" Version="6.0.0" />
+    
   </ItemGroup>
 
 </Project>
