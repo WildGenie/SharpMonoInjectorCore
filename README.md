@@ -1,6 +1,6 @@
 # SharpMonoInjectorCore
 
-SharpMonoInjectorCore is a tool for injecting assemblies into Mono embedded applications, made compatible with the Microsoft .NET Framework Core. The target process usually does not require a restart before injecting an updated version of the assembly. Your unload method should destroy all allocated resources to prevent any memory leaks. Both x86 and x64 processes are supported. You can see an example implementation [here](https://github.com/winstxnhdw/rc15-hax/tree/master/rc15-hax/Scripts).
+SharpMonoInjectorCore is a tool for injecting assemblies into Mono embedded applications, made compatible with the Microsoft .NET Core. The target process usually does not require a restart before injecting an updated version of the assembly. Your unload method should destroy all allocated resources to prevent any memory leaks. Both x86 and x64 processes are supported. You can see an example implementation [here](https://github.com/winstxnhdw/rc15-hax/tree/master/rc15-hax/Scripts).
 
 ## Requirements
 
