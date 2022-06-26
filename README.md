@@ -70,11 +70,3 @@ To update your submodule later, simply run the following.
 ```bash
 git submodule update --remote
 ```
-
-## Troubleshoot
-
-When using this application, you may run into the following warnings.
-
-> Unable to clear the console. To fix this issue, please ensure that the output is not being redirected.
-
-This simply means that the console's output is being redirected elsewhere. Whether this was intentional or not, this warning is safe to ignore but it does hint some underlying issues you have with your CLI that you may be interested in fixing.
