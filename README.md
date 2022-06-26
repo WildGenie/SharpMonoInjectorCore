@@ -61,7 +61,7 @@ If you plan package this along with your cheats, I would recommend that you add 
 
 ```bash
 mkdir submodules
-git submodule add --depth 1 https://github.com/winstxnhdw/SharpMonoInjectorCore.git ./submodules
+git submodule add --depth 1 https://github.com/winstxnhdw/SharpMonoInjectorCore.git ./submodules/SharpMonoInjectorCore
 git config -f .gitmodules submodule.submodules/SharpMonoInjectorCore.shallow true
 ```
 
