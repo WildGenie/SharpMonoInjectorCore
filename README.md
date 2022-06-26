@@ -57,7 +57,7 @@ Required arguments:
 
 ## Submodule
 
-If you plan package this along with your cheats, I would recommend that you add this repository as a git submodule.
+If you plan to package this along with your cheats, I would recommend that you add this repository as a git submodule.
 
 ```bash
 mkdir submodules
