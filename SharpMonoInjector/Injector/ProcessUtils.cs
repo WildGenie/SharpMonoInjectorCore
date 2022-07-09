@@ -75,7 +75,10 @@ namespace SharpMonoInjector {
                         }
                     }
                 }
-                catch (Exception ex) { File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "\\DebugLog.txt", "[ProcessUtils] GetMono - ERROR: " + ex.Message + "\r\n"); }
+
+                catch (Exception ex) {
+                    File.AppendAllText($"{AppDomain.CurrentDomain.BaseDirectory}\\DebugLog.txt", $"[ProcessUtils] GetMono - ERROR: {ex.Message}\r\n");
+                }
             }
 
             monoModule = IntPtr.Zero;
@@ -108,6 +111,7 @@ namespace SharpMonoInjector {
             catch (Exception ex) {
                 File.AppendAllText($"{AppDomain.CurrentDomain.BaseDirectory}\\DebugLog.txt", $"[ProcessUtils] is64Bit - ERROR:{ex.Message}\r\n");
             }
+
             return true;
         }
     }
