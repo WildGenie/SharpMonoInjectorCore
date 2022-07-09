@@ -3,13 +3,16 @@
   <PropertyGroup>
 
     <OutDir>../bin</OutDir>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <OutputType>exe</OutputType>
     <RootNamespace>SharpMonoInjector</RootNamespace>
     <AssemblyName>SharpMonoInjector</AssemblyName>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Deterministic>true</Deterministic>
     
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="6.0.0" />
+  </ItemGroup>
 
 </Project>

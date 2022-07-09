@@ -4,7 +4,7 @@ SharpMonoInjectorCore is a tool for injecting assemblies into Mono embedded appl
 
 ## Requirements
 
-- Windows 10/11
+- Windows 10 or higher
 - [Microsoft .NET SDK](https://dotnet.microsoft.com/en-us/download)
 
 ## Concept
