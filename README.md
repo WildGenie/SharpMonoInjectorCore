@@ -22,12 +22,12 @@ dotnet build SharpMonoInjector.Console
 Inject
 
 ```bash
-SharpMonoInjectorCore.exe inject -p RobocraftClient -a rc15-hax.dll -n RC15_HAX -c Loader -m Load
+SharpMonoInjector.exe inject -p RobocraftClient -a rc15-hax.dll -n RC15_HAX -c Loader -m Load
 ```
 
 ```yaml
 Usage:
-SharpMonoInjectorCore.exe inject <options>
+SharpMonoInjector.exe inject <options>
 
 Required arguments:
 -p      id or name of the target process
@@ -40,12 +40,12 @@ Required arguments:
 Eject
 
 ```bash
-SharpMonoInjectorCore.exe eject -p RobocraftClient -a 0x13D23A98 -n RC15_HAX -c Loader -m Unload
+SharpMonoInjector.exe eject -p RobocraftClient -a 0x13D23A98 -n RC15_HAX -c Loader -m Unload
 ```
 
 ```yaml
 Usage:
-SharpMonoInjectorCore.exe eject <options>
+SharpMonoInjector.exe eject <options>
 
 Required arguments:
 -p      id or name of the target process

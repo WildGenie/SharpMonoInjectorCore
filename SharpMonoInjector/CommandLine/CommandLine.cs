@@ -41,7 +41,7 @@ internal static class CommandLine {
     static void PrintHelp(string additionalMessage = "") {
         const string help =
             "Usage:\n" +
-            "smi.exe <inject/eject> <options>\n\n" +
+            "SharpMonoInjector.exe <inject/eject> <options>\n\n" +
             "Options:\n" +
             "-p - The id or name of the target process\n" +
             "-a - When injecting, the path of the assembly to inject. When ejecting, the address of the assembly to eject\n" +
@@ -49,8 +49,8 @@ internal static class CommandLine {
             "-c - The name of the loader class\n" +
             "-m - The name of the method to invoke in the loader class\n\n" +
             "Examples:\n" +
-            "SharpMonoInjectorCore.exe inject -p RobocraftClient -a rc15-hax.dll -n RC15_HAX -c Loader -m Load\n" +
-            "SharpMonoInjectorCore.exe eject -p RobocraftClient -a 0x13D23A98 -n RC15_HAX -c Loader -m Unload\n";
+            "SharpMonoInjector.exe inject -p RobocraftClient -a rc15-hax.dll -n RC15_HAX -c Loader -m Load\n" +
+            "SharpMonoInjector.exe eject -p RobocraftClient -a 0x13D23A98 -n RC15_HAX -c Loader -m Unload\n";
 
         if (!string.IsNullOrEmpty(additionalMessage)) Console.WriteLine(additionalMessage);
         Console.WriteLine(help);
