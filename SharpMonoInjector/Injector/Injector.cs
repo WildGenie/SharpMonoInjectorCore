@@ -21,7 +21,7 @@ public class Injector : IDisposable {
     const string mono_object_get_class = "mono_object_get_class";
     const string mono_class_get_name = "mono_class_get_name";
 
-    Dictionary<string, IntPtr> Exports => new Dictionary<string, IntPtr> {
+    Dictionary<string, IntPtr> Exports { get; } = new Dictionary<string, IntPtr> {
         { mono_get_root_domain, IntPtr.Zero },
         { mono_thread_attach, IntPtr.Zero },
         { mono_image_open_from_data, IntPtr.Zero },
@@ -159,8 +159,8 @@ public class Injector : IDisposable {
     }
 
     static void ThrowIfNull(IntPtr ptr, string methodName) {
-        if (ptr == IntPtr.Zero)
-            throw new InjectorException($"{methodName}() returned NULL");
+        if (ptr != IntPtr.Zero) return;
+        throw new InjectorException($"{methodName}() returned NULL");
     }
 
     IntPtr GetRootDomain() {

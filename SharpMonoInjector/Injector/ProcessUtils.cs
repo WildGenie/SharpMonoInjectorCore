@@ -92,6 +92,7 @@ namespace SharpMonoInjector {
                     if (handle != IntPtr.Zero) {
                         ushort pMachine = 0;
                         // Check if the process is running on a 64-bit machine
+                        IsWow64Process2(handle, out pMachine, out _);
                         return pMachine == 332 ? false : true;
                     }
                 }
