@@ -14,7 +14,7 @@ SharpMonoInjector works by dynamically generating machine code, writing it to th
 ## Build
 
 ```bash
-dotnet build SharpMonoInjector
+dotnet publish SharpMonoInjector
 ```
 
 ## Usage
