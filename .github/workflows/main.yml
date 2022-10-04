@@ -19,5 +19,5 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
-    - name: Build SharpMonoInjectorCore
-      run: dotnet build SharpMonoInjectorCore
+    - name: Build SharpMonoInjector
+      run: dotnet build SharpMonoInjector
