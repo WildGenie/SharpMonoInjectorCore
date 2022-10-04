@@ -3,7 +3,7 @@ name: dotnet
 on:
   push:
     paths:
-      - 'SharpMonoInjectorCore/**'
+      - 'SharpMonoInjector/**'
       - '.github/workflows/main.yml'
 
 jobs:
