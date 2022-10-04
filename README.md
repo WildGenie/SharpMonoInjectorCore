@@ -1,5 +1,7 @@
 # SharpMonoInjectorCore
 
+![main.yml](https://github.com/winstxnhdw/SharpMonoInjectorCore/actions/workflows/main.yml/badge.svg)
+
 SharpMonoInjectorCore is a tool for injecting assemblies into Mono embedded applications, made compatible with the Microsoft .NET Core. The target process may require a restart before injecting an updated version of the assembly. Your unload method should destroy all allocated resources to prevent any memory leaks. Both x86 and x64 processes are supported. You can see an example implementation [here](https://github.com/winstxnhdw/rc15-hax/blob/master/rc15-hax/Scripts/Loader.cs).
 
 ## Requirements
